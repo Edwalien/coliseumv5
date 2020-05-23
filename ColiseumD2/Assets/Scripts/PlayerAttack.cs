@@ -19,6 +19,8 @@ namespace Coliseum
         private int c;
         private playerMove pM;
         private bool Hit;
+        public float damage;
+        public bool enrage; // Si le joueur est sous l'effet d'un bonus de force
 
         private PlayerHealth pH;
 
@@ -31,6 +33,8 @@ namespace Coliseum
             pH = GetComponent<PlayerHealth>();
             pM = GetComponent<playerMove>();
             initVit = pM.speed;
+            Timer = 99f; // le timer doit être supérieur au cooldown en début de game sinon les joueurs ne peuvent pas se battre durant les premières secondes
+            damage = myWeapon.attackDamage;
         }
 
         void Update()
@@ -55,7 +59,6 @@ namespace Coliseum
                     {
                         FindObjectOfType<AudioManager>().Play("blade_miss");
                     }
-                    c++;
                     Timer = 0f;
                 }
             }
@@ -63,12 +66,22 @@ namespace Coliseum
 
         private void DoAttack()
         {
+            float comboDmg; // permet d'avoir les dégâts de base (les dégâts de l'arme multiplié par 2 si le joueur est sous l'effet d'un bonus de force sinon les dégâts de l'arme tout simplement)
+            if (enrage)
+                comboDmg = myWeapon.attackDamage * 2;
+            else
+                comboDmg = myWeapon.attackDamage;
+            
             float damage = myWeapon.attackDamage;
 
             if (c > 2)
             {
                 damage *= 1.5f;
                 c = 0;
+            }
+            else
+            {
+                damage = comboDmg;
             }
             
             Ray ray1 = new Ray(Hand.transform.position, transform.forward);
@@ -96,6 +109,7 @@ namespace Coliseum
                     Hit = false;
                     enemyView.RPC("Damage", target, damage);
                     enemyView.RPC("Knockback", target,(Hand.transform.forward * myWeapon.knockback));
+                    c++;
                 }
 
                 if (hit.collider.CompareTag("Bonus"))
@@ -112,8 +126,9 @@ namespace Coliseum
 
                         if (type == "force")
                         {
-                            initDmg *= 2;
-                            Invoke("SetDamageNormal", 300);
+                            damage *= 2;
+                            enrage = true;
+                            Invoke("SetDamageNormal", 30);
                         }
 
                         if (type == "vitesse")
@@ -123,6 +138,7 @@ namespace Coliseum
                         }
                         
                         Debug.Log("Bonus died !");
+                        hit.collider.transform.Translate(0,-100,0); //En attendant de les kill => tp en dessous de la map pour test
                     }
 
                     bonusHealth.health -= damage;
@@ -133,7 +149,8 @@ namespace Coliseum
 
         private void SetDamageNormal()
         {
-            initDmg = myWeapon.attackDamage;
+            damage = myWeapon.attackDamage;
+            enrage = false;
         }
 
         private void SetSpeedNormal()

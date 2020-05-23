@@ -1795,13 +1795,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bonus
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a3097a482178f8c4ca3d2862d1325413, type: 3}
+      propertyPath: m_TagString
+      value: Bonus
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3097a482178f8c4ca3d2862d1325413, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3097a482178f8c4ca3d2862d1325413, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.15
+      value: -12.09
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3097a482178f8c4ca3d2862d1325413, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1886,7 +1890,7 @@ MonoBehaviour:
   shieldCooldown: 0
   shieldDuration: 0
   healthText: {fileID: 0}
-  type: 
+  type: vie
 --- !u!1 &884177551
 GameObject:
   m_ObjectHideFlags: 0

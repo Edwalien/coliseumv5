@@ -32,6 +32,7 @@ namespace Coliseum
         {
             photonView = (PhotonView)GameManager.weapon.GetComponent<PhotonView>();
             anim = GetComponent<Animator>();
+            shieldTimer = 99f;
         }
 
         private void Update()
@@ -106,7 +107,10 @@ namespace Coliseum
         public void Damage(float dmg)
         {
             Debug.Log ("Damaged");
-            health -= dmg;
+            if (!shield)
+            {
+                health -= dmg;
+            }
         }
         //
 
