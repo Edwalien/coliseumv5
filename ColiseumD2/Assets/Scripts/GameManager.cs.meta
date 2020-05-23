@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 5543d98ba92c3ef4bbfb4ef6de7f7603
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SansPantalon: {instanceID: 0}
+  - AvecPantalon: {instanceID: 0}
+  - claymore: {fileID: 4497564698649447041, guid: b59196a826a17cc42bdc30e146fbf3d3,
+      type: 3}
+  - double_lames: {fileID: 7385639196645089680, guid: fb6004af4efa3614dacd3769a6cd55d6,
+      type: 3}
+  - lance: {fileID: 5158253823833111828, guid: bc1f91550ce042e46a204b9e248aa6a0, type: 3}
+  - marteau: {fileID: 4122113917770690888, guid: 0e60aec05d76ff145a28734d50c6a352,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
