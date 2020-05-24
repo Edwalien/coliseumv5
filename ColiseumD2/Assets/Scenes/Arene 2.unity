@@ -14775,7 +14775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8290e8f1995277749b077572a70c69f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeStart: 40
+  timeStart: 900
   textBox: {fileID: 165663443}
   min: 0
   sec: 0

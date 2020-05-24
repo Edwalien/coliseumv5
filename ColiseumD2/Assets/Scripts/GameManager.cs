@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         InitialSpawnPoint(); //spawn du joueur
         PhotonNetwork.Instantiate(weapon.name, FreePos, Quaternion.identity);
         
-        Invoke("EndGame", 900); //Arreter la partie apres 40 secondes
+        Invoke("EndGame", 900); //Arreter la partie apres 900 secondes
     }
 
     private void Update()
@@ -83,8 +83,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Time.timeScale = 0;
         End = true;
         EndMenu.SetActive(true);
-        if (ui_leaderboard.gameObject.activeSelf) ui_leaderboard.gameObject.SetActive(false);
-        else Leaderboard(ui_leaderboard);
+        /*if (ui_leaderboard.gameObject.activeSelf) ui_leaderboard.gameObject.SetActive(false);
+        else */
+        Leaderboard(ui_leaderboard);
     }
 
     public void InitialSpawnPoint()

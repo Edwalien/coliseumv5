@@ -12283,6 +12283,8 @@ MonoBehaviour:
   initDmg: 0
   initVit: 0
   anim: {fileID: 0}
+  damage: 0
+  enrage: 0
 --- !u!1 &4497564698649447043
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ namespace Coliseum
         public float damage;
         public bool enrage; // Si le joueur est sous l'effet d'un bonus de force
 
+        private GameManager _gameManager; //Pour compter le kills
+
         private PlayerHealth pH;
 
         void Start()
@@ -32,6 +34,7 @@ namespace Coliseum
             anim = GetComponent<Animator>();
             pH = GetComponent<PlayerHealth>();
             pM = GetComponent<playerMove>();
+            _gameManager = new GameManager();  //Pour compter les kills
             initVit = pM.speed;
             Timer = 99f; // le timer doit être supérieur au cooldown en début de game sinon les joueurs ne peuvent pas se battre durant les premières secondes
             damage = myWeapon.attackDamage;
@@ -94,6 +97,10 @@ namespace Coliseum
                     RpcTarget target = hit.collider.GetComponent<RpcTarget>();
                     PhotonView enemyView = hit.transform.GetComponent<PhotonView>();
                     PlayerHealth enemyHealth = hit.transform.GetComponent<PlayerHealth>();
+                    if (enemyHealth.health <= damage)                                      //Compter les kills
+                    {
+                        _gameManager.ChangeStat_S(PhotonNetwork.LocalPlayer.ActorNumber, 0, 1);
+                    }
                     Hit = true;
                     if (myWeapon.weapon == "marteau" && Hit)
                     {

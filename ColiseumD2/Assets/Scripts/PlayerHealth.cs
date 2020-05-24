@@ -24,6 +24,7 @@ namespace Coliseum
         public TMPro.TMP_Text healthText;
         private float MinHealth = 0;
         private float MaxHealth = 100;
+        private GameManager _gameManager; //Compter les morts
 
         // Bonus
         public string type;
@@ -31,6 +32,7 @@ namespace Coliseum
         private void Start()
         {
             photonView = (PhotonView)GameManager.weapon.GetComponent<PhotonView>();
+            _gameManager = GetComponent<GameManager>(); //Compter les morts
             anim = GetComponent<Animator>();
             shieldTimer = 99f;
         }
@@ -63,13 +65,13 @@ namespace Coliseum
                     health = MaxHealth;
                 }
 
-                if (health < MinHealth)
+                if (health <= MinHealth)
                 {
                     health = MinHealth;
                     PhotonNetwork.Destroy(GameManager.weapon);
                     GameManager.RespawnPoint();
+                    _gameManager.ChangeStat_S(PhotonNetwork.LocalPlayer.ActorNumber, 1, 1);
                     PhotonNetwork.Instantiate(GameManager.weapon.name, GameManager.FreePos, Quaternion.identity);
-
                 }
             }
             

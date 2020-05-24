@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/simon/Desktop/JustinColisium/ColiseumD2/Coliseum2.exe
+C:/Users/dimon/Desktop/test23/Coliseum2.exe
 SceneListBegin?
 Assets/Scenes/menu.unity
 Assets/Scenes/Arene 1.unity
@@ -72,8 +72,6 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 cdaa3012b4999c0675abec3fc463011b Assembly-CSharp.dll:.Timer
 d3c76b14a25eebd3a3323dd43297919c Unity.TextMeshPro.dll:TMPro.TMP_InputField
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 507174d46dacbc5fe45e28485db5dd1e UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -141,7 +139,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 666a1bc8d46f314c018ffaaa3f6628d1 Cinemachine.dll:Cinemachine.CinemachineFreeLook
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-a959c0684357b67a794c9f0f1dd69259 Assembly-CSharp.dll:.Spawner
+4c3042b03d5a41ea44f2396a08576147 Assembly-CSharp.dll:.Spawner
 0927e41b46e1bd11671f9b5adda4b832 PhotonUnityNetworking.dll:Photon.Pun.PhotonRigidbody2DView
 71bb6a6b6c8f052f948db64c7dd3ca4f Cinemachine.dll:Cinemachine.PostFX.CinemachinePostProcessing
 71bb6a6b6c8f052f948db64c7dd3ca4f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.OnStartDelete
