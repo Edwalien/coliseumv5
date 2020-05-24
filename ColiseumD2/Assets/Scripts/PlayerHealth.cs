@@ -66,6 +66,10 @@ namespace Coliseum
                 if (health < MinHealth)
                 {
                     health = MinHealth;
+                    PhotonNetwork.Destroy(GameManager.weapon);
+                    GameManager.RespawnPoint();
+                    PhotonNetwork.Instantiate(GameManager.weapon.name, GameManager.FreePos, Quaternion.identity);
+
                 }
             }
             

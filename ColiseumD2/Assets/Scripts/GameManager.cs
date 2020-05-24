@@ -8,6 +8,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public GameObject lance;
     public GameObject marteau;
     public static GameObject weapon;
+    public static Vector3 FreePos;
     
     //La fin de la partie
     public static bool End;
@@ -55,8 +57,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             weapon = lance;
         else if (LobbyManager.selectedWeapon == "3")
             weapon = double_lames;
-        Vector3 pos = new Vector3(10, 2, 10); //spawn du joueur
-        PhotonNetwork.Instantiate(weapon.name, pos, Quaternion.identity);
+        InitialSpawnPoint(); //spawn du joueur
+        PhotonNetwork.Instantiate(weapon.name, FreePos, Quaternion.identity);
         
         Invoke("EndGame", 900); //Arreter la partie apres 40 secondes
     }
@@ -84,7 +86,65 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         if (ui_leaderboard.gameObject.activeSelf) ui_leaderboard.gameObject.SetActive(false);
         else Leaderboard(ui_leaderboard);
     }
+
+    public void InitialSpawnPoint()
+    {
+        Random rndposx = new Random();
+        Random rndposz = new Random();
+        Random addvalue = new Random();
+        
+        int posx = rndposx.Next(-30, 30);
+        int posz = rndposz.Next(-30, 30);
+        int toAdd = addvalue.Next(-40, 40);
+
+        while ((posx < 5 && posx > -5)&&(posz < 5 && posz > -5))
+        {
+            Random flipcoin = new Random();
+            int fliped = flipcoin.Next(-10,10);
+            if (fliped < 0)
+            {
+                posx = posx + toAdd;
+            }
+            else
+            {
+                posz = posz + toAdd;
+            }
+        }
+
+        
+        FreePos = new Vector3(posx, 1, posz);
+    }
     
+    public static void RespawnPoint()
+    {
+        if (!Physics.Raycast(new Vector3(10, 1, 0), Vector3.up,20))
+        {
+            FreePos = new Vector3(10, 1, 0);
+        }
+
+        else
+        {
+            if (!Physics.Raycast(new Vector3(-10, 1, 0), Vector3.up,20))
+            {
+                FreePos = new Vector3(-10, 0, 0);
+            }
+            else
+            {
+                if (!Physics.Raycast(new Vector3(0, 1, 10), Vector3.up,20))
+                {
+                    FreePos = new Vector3(0, 0, 10);
+                }
+                else
+                {
+                    if (!Physics.Raycast(new Vector3(0, 1, -10), Vector3.up,20))
+                    {
+                        FreePos = new Vector3(0, 0, -10);
+                    }
+                }
+            }
+        }
+    }
+
     //Fonctions pour le tableau des scores
     private void InitializeUI()
     {
