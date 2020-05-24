@@ -40,6 +40,7 @@ namespace Coliseum
         void Update()
         {
             anim.SetBool("leftClick", Input.GetMouseButtonUp(0) && Timer > myWeapon.cooldown && !pH.shield);
+            anim.SetInteger("combo", c);
             if (photonView.IsMine)
             {
                 Timer += Time.deltaTime;
@@ -138,7 +139,8 @@ namespace Coliseum
                         }
                         
                         Debug.Log("Bonus died !");
-                        hit.collider.transform.Translate(0,-100,0); //En attendant de les kill => tp en dessous de la map pour test
+                        //hit.collider.transform.Translate(0,-100,0);
+                        Destroy(hit.collider.gameObject);
                     }
 
                     bonusHealth.health -= damage;
